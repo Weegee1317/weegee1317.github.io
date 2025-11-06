@@ -15,11 +15,11 @@ class ApplicationMain
 	#if !macro
 	public static function main()
 	{
-		lime.system.System.__registerEntryPoint("Funkin", create);
+		lime.system.System.__registerEntryPoint("Kade Engine", create);
 
 		#if (js && html5)
 		#if (munit || utest)
-		lime.system.System.embed("Funkin", null, 1280, 720);
+		lime.system.System.embed("Kade Engine", null, 1280, 720);
 		#end
 		#else
 		create(null);
@@ -32,11 +32,11 @@ class ApplicationMain
 
 		ManifestResources.init(config);
 
-		app.meta["build"] = "581";
-		app.meta["company"] = "ninjamuffin99";
-		app.meta["file"] = "Funkin";
-		app.meta["name"] = "Friday Night Funkin'";
-		app.meta["packageName"] = "com.ninjamuffin99.funkin";
+		app.meta["build"] = "1";
+		app.meta["company"] = "kadedev";
+		app.meta["file"] = "Kade Engine";
+		app.meta["name"] = "Friday Night Funkin': Kade Engine";
+		app.meta["packageName"] = "com.kadedev.kadeengine";
 		app.meta["version"] = "0.2.7.1";
 
 		
@@ -49,15 +49,15 @@ class ApplicationMain
 			borderless: false,
 			// display: 0,
 			element: null,
-			frameRate: 60,
-			#if !web fullscreen: true, #end
+			frameRate: null,
+			#if !web fullscreen: false, #end
 			height: 720,
 			hidden: #if munit true #else false #end,
 			maximized: false,
 			minimized: false,
 			parameters: {},
 			resizable: true,
-			title: "Friday Night Funkin'",
+			title: "Friday Night Funkin': Kade Engine",
 			width: 1280,
 			x: null,
 			y: null,
@@ -100,7 +100,7 @@ class ApplicationMain
 		
 		#elseif !air
 		app.window.context.attributes.background = 0;
-		app.window.frameRate = 60;
+		app.window.frameRate = null;
 		#end
 
 		var preloader = getPreloader();
@@ -113,7 +113,7 @@ class ApplicationMain
 			@:privateAccess preloader.start();
 		});
 
-		preloader.onComplete.add(start.bind(cast(app.window, openfl.display.Window).stage));
+		preloader.onComplete.add(start.bind((cast app.window:openfl.display.Window).stage));
 
 		for (library in ManifestResources.preloadLibraries)
 		{
