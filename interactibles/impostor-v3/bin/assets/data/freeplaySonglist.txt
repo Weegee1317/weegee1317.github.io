@@ -10,4 +10,3 @@ Rivals:tomongus:3
 Chewmate:hamster:3
 Double Trouble:impostor:1
 Defeat:impostor:1
-skinny-nuts:impostor:1
